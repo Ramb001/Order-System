@@ -1,5 +1,6 @@
 from PyQt5.QtWidgets import QComboBox, QMainWindow, QApplication, QLineEdit, QWidget, QGridLayout, QPushButton
-import sys
+
+from numpy import maximum
 
 from Qt.createMenu import CreateWindow
 
@@ -45,7 +46,7 @@ class LoginWindow(QMainWindow):
 
         
 def main():
-    app = QApplication(sys.argv)
+    app = QApplication([""])
     w = LoginWindow()
     w.show()
     app.exec_()
