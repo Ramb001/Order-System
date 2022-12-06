@@ -1,6 +1,9 @@
 from PyQt5.QtWidgets import QComboBox, QMainWindow, QApplication, QLineEdit, QWidget, QGridLayout, QPushButton
 import sys
 
+from Qt.createMenu import CreateWindow
+
+
 class LoginWindow(QMainWindow):
 
     def __init__(self):
@@ -30,10 +33,17 @@ class LoginWindow(QMainWindow):
         self.gridLayout.addWidget(self.lineEditPassword, 0, 2, 1, 1)
         self.gridLayout.addWidget(self.enterToSys, 1, 1, 1, 1)
         self.gridLayout.addWidget(self.createEmployee, 2, 1, 1, 1)
+        self.createEmployee.clicked.connect(self.create)
         
         self.centralwidget.setLayout(self.gridLayout)
         self.setCentralWidget(self.centralwidget)
+        
+    def create(self):
+        self.createWindow = CreateWindow()
+        self.createWindow.show()
+            
 
+        
 def main():
     app = QApplication(sys.argv)
     w = LoginWindow()
