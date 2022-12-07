@@ -3,6 +3,7 @@ from PyQt5.QtWidgets import QComboBox, QMainWindow, QApplication, QLineEdit, QWi
 from numpy import maximum
 
 from Qt.createMenu import CreateWindow
+from Actions.checkStaff import checkPerson
 
 
 class LoginWindow(QMainWindow):
@@ -22,9 +23,11 @@ class LoginWindow(QMainWindow):
 
         self.enterToSys = QPushButton()
         self.enterToSys.setText("Enter")
+        self.enterToSys.clicked.connect(self.enterSystem)
         
         self.createEmployee = QPushButton()
         self.createEmployee.setText("Create")
+        self.createEmployee.clicked.connect(self.create)
 
         self.combobox = QComboBox()
         self.combobox.addItems(['Director', 'Administrator', 'Waiter'])
@@ -34,7 +37,6 @@ class LoginWindow(QMainWindow):
         self.gridLayout.addWidget(self.lineEditPassword, 0, 2, 1, 1)
         self.gridLayout.addWidget(self.enterToSys, 1, 1, 1, 1)
         self.gridLayout.addWidget(self.createEmployee, 2, 1, 1, 1)
-        self.createEmployee.clicked.connect(self.create)
         
         self.centralwidget.setLayout(self.gridLayout)
         self.setCentralWidget(self.centralwidget)
@@ -42,6 +44,20 @@ class LoginWindow(QMainWindow):
     def create(self):
         self.createWindow = CreateWindow()
         self.createWindow.show()
+        
+    def enterSystem(self):
+        post = str(self.combobox.currentText()).lower()
+        login = str(self.lineEditLogin.text())
+        password =  str(self.lineEditPassword.text())
+        if len(login) != 0 and len(password) != 0:
+            if checkPerson(post, login, password):
+                self.enterToSys.setStyleSheet("color : green")
+                login = ''
+                password = ''
+            else:
+                self.enterToSys.setStyleSheet("color : red")
+        else:
+            self.enterToSys.setStyleSheet("color : red")
             
 
         
