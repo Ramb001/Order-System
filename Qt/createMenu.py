@@ -1,4 +1,5 @@
-from PyQt5.QtWidgets import QLineEdit, QWidget, QGridLayout, QPushButton, QMainWindow, QComboBox, QBoxLayout
+from PyQt5.QtWidgets import QLineEdit, QWidget, QGridLayout, QPushButton, QMainWindow, QComboBox
+from sqlalchemy import false
 
 from Actions.addStaff import add
 
@@ -26,9 +27,6 @@ class CreateWindow(QMainWindow):
         self.combobox.currentIndexChanged.connect(self.addNewUser)
         self.createEmployee.clicked.connect(self.addNewUser)
         
-        self.competeText = QBoxLayout()
-        
-        
         self.gridLayout.addWidget(self.combobox, 0, 0, 1, 1)
         self.gridLayout.addWidget(self.lineEditLogin, 0, 1, 1, 1)
         self.gridLayout.addWidget(self.lineEditPassword, 0, 2, 1, 1)
@@ -43,5 +41,8 @@ class CreateWindow(QMainWindow):
         password =  str(self.lineEditPassword.text())
         if len(login) != 0 and len(password) != 0:
             add(post, login, password)
+            self.createEmployee.setStyleSheet("color : green")
             login = ''
             password = ''
+        else:
+            self.createEmployee.setStyleSheet("color : red")
