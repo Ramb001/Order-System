@@ -1,6 +1,6 @@
 from PyQt5.QtWidgets import QLineEdit, QWidget, QGridLayout, QPushButton, QMainWindow, QComboBox, QBoxLayout
 
-from handlers.addStaff import add
+from Actions.addStaff import add
 
 
 class CreateWindow(QMainWindow):
