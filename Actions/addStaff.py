@@ -1,4 +1,4 @@
-from DBs import dbStaff
+from DB import dbStaff
 
 
 def add(post, login, password):
