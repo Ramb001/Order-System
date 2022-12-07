@@ -1,6 +1,6 @@
 from PyQt5.QtWidgets import QLineEdit, QWidget, QGridLayout, QPushButton, QMainWindow, QComboBox, QBoxLayout
 
-from handlers.addStaff import add
+from Handlers.addStaff import add
 
 
 class CreateWindow(QMainWindow):
@@ -25,6 +25,9 @@ class CreateWindow(QMainWindow):
         self.createEmployee.setText("Create")
         self.combobox.currentIndexChanged.connect(self.addNewUser)
         self.createEmployee.clicked.connect(self.addNewUser)
+        
+        self.competeText = QBoxLayout()
+        
         
         self.gridLayout.addWidget(self.combobox, 0, 0, 1, 1)
         self.gridLayout.addWidget(self.lineEditLogin, 0, 1, 1, 1)
