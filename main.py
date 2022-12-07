@@ -1,5 +1,5 @@
 from Qt.loginMenu import main
-from DBs.dbStaff import createStaff
+from DB.dbStaff import createStaff
 
 
 if __name__ == '__main__':
