@@ -15,8 +15,6 @@ def createMenu():
             """)
 
     traffic = json.load(open('menu.json'))
-    columns = ['name', 'weight', 'price']
-
     for i in traffic:
         for k, v in traffic[i].items():
             cort = list()
