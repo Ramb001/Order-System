@@ -1,6 +1,6 @@
 from PyQt5.QtWidgets import QMainWindow, QWidget, QGridLayout, QPushButton
 
-from visitorsMenu import VisitorsMenu
+from Qt.visitorsMenu import VisitorsMenu
 
 
 class MainMenu(QMainWindow):
@@ -9,6 +9,7 @@ class MainMenu(QMainWindow):
 
         self.centralwidget = QWidget()
         self.gridLayout = QGridLayout()
+        self.setWindowTitle("Main menu")
         
         self.orders = QPushButton()
         self.orders.setText("Orders")
