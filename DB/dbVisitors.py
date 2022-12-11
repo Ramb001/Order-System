@@ -1,4 +1,3 @@
-from distutils.util import copydir_run_2to3
 import sqlite3 
 
 
