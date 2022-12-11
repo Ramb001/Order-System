@@ -1,6 +1,7 @@
-from PyQt5.QtWidgets import QComboBox, QMainWindow, QApplication, QLineEdit, QWidget, QGridLayout, QPushButton
+from PyQt5.QtWidgets import QComboBox, QMainWindow, QLineEdit, QWidget, QGridLayout, QPushButton
 
 from Qt.createMenu import CreateWindow
+from Qt.mainMenu import MainMenu
 from Actions.checkStaff import checkPerson
 
 
@@ -10,7 +11,7 @@ class LoginWindow(QMainWindow):
         
         self.centralwidget = QWidget()
         self.gridLayout = QGridLayout()
-        self.setWindowTitle("WORLD inc.")
+        self.setWindowTitle("Logging in")
 
         self.lineEditLogin = QLineEdit()
         self.lineEditLogin.setPlaceholderText("Login")
@@ -49,17 +50,12 @@ class LoginWindow(QMainWindow):
         if len(login) != 0 and len(password) != 0:
             if checkPerson(post, login, password):
                 self.enterToSys.setStyleSheet("color : green")
+                self.mainMenu = MainMenu()
+                self.mainMenu.show()
+                self.hide()
                 login = ''
                 password = ''
             else:
                 self.enterToSys.setStyleSheet("color : red")
         else:
             self.enterToSys.setStyleSheet("color : red")
-            
-
-        
-def main():
-    app = QApplication([""])
-    w = LoginWindow()
-    w.show()
-    app.exec_()
