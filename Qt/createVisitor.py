@@ -1,6 +1,7 @@
 from PyQt5.QtWidgets import QLineEdit, QWidget, QGridLayout, QPushButton, QMainWindow, QApplication
 
-from Actions.createVisitor import createPerson
+from Actions.createVisitor import add
+
 
 
 class CreateVisitor(QMainWindow):
@@ -24,7 +25,7 @@ class CreateVisitor(QMainWindow):
         
         self.gridLayout.addWidget(self.lineEditSurname, 0, 0, 1, 1)
         self.gridLayout.addWidget(self.lineEditName, 0, 1, 1, 1)
-        self.gridLayout.addWidget(self.createEmployee, 1, 1, 1, 1)
+        self.gridLayout.addWidget(self.createVisitor, 1, 1, 1, 1)
         
         self.centralwidget.setLayout(self.gridLayout)
         self.setCentralWidget(self.centralwidget)
@@ -33,15 +34,9 @@ class CreateVisitor(QMainWindow):
         surname = str(self.lineEditSurname.text())
         name =  str(self.lineEditName.text())
         if len(surname) != 0 and len(name) != 0:
-            createPerson()
+            add(surname, name)
             self.createVisitor.setStyleSheet("color : green")
             surname = ''
             name = ''
         else:
             self.createVisitor.setStyleSheet("color : red")
-            
-if __name__ == "__main__":
-    app = QApplication([""])
-    w = CreateVisitor()
-    w.show()
-    app.exec_()
