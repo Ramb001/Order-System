@@ -1,13 +1,10 @@
 from PyQt5.QtWidgets import QComboBox, QMainWindow, QApplication, QLineEdit, QWidget, QGridLayout, QPushButton
 
-from numpy import maximum
-
 from Qt.createMenu import CreateWindow
 from Actions.checkStaff import checkPerson
 
 
 class LoginWindow(QMainWindow):
-
     def __init__(self):
         super().__init__()
         
