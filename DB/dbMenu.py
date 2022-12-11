@@ -18,7 +18,7 @@ def createMenu():
     for i in traffic:
         for k, v in traffic[i].items():
             cort = list()
-            for j in v:
+            for _ in v:
                 names = [d['name'] for d in v]
                 weights = [d['weight'] for d in v]
                 prices = [d['price'] for d in v]
