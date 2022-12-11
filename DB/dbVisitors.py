@@ -10,3 +10,7 @@ def createVisitors():
         name TEXT,
         money INT)''')
     con3.commit()
+    
+    visitor = [('Stanko', 'Artem', '0'), ('Ustinov', 'Iliy', '0')]
+    cur3.executemany("INSERT OR REPLACE INTO visitors VALUES(?, ?, ?);", visitor)
+    con3.commit()
