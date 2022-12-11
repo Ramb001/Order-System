@@ -1,5 +1,7 @@
 from PyQt5.QtWidgets import QMainWindow, QWidget, QGridLayout, QPushButton
 
+from visitorsMenu import VisitorsMenu
+
 
 class MainMenu(QMainWindow):
     def __init__(self):
@@ -34,5 +36,10 @@ class MainMenu(QMainWindow):
         self.flag = not self.flag
         if self.flag:
             self.run.setText("Day is opened!")
+            self.visitors.clicked.connect(self.visitor)
         else:
             self.run.setText("Day is closed!")
+
+    def visitor(self):
+        self.visitor = VisitorsMenu()
+        self.visitor.show()

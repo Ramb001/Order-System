@@ -8,4 +8,4 @@ def add(x):
         x.insertRow(row)
         for column, item in enumerate(form):
             print(str(item))
-            x.setItem(row, column, QTableWidgetItem(str(item))) 
+            x.setItem(row, column, QTableWidgetItem(str(item)))
