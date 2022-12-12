@@ -31,7 +31,7 @@ class CreateOrder(QMainWindow):
         self.category.currentIndexChanged.connect(self.updateCombo)
         
         self.position = QComboBox()
-        self.position.addItems(['Мартини Амаро'])
+        self.position.addItems(['Мартини спирито'])
         
         self.amount = QLineEdit()
         self.amount.setPlaceholderText("Amount")
@@ -60,7 +60,7 @@ class CreateOrder(QMainWindow):
         visitor = str(self.choosePerson.currentText())
         position = str(self.position.currentText())
         amount = str(self.amount.text())
-        if len(str(self.amount)) != 0 and len(str(self.table)) != 0:
+        if len(str(amount)) != 0 and len(str(tableNum)) != 0:
             stack(tableNum, visitor, category, position, amount)
             self.addButton.setStyleSheet("color : green")
         else:
