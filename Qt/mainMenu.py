@@ -1,7 +1,8 @@
-from PyQt5.QtWidgets import QMainWindow, QWidget, QGridLayout, QPushButton
+from PyQt5.QtWidgets import QMainWindow, QWidget, QGridLayout, QPushButton, QMessageBox
 
 from Qt.visitorsMenu import VisitorsMenu
 from Qt.ordersMenu import OrdersMenu
+from Actions.closeDay import calculate
 
 
 class MainMenu(QMainWindow):
@@ -17,9 +18,11 @@ class MainMenu(QMainWindow):
         
         self.visitors = QPushButton()
         self.visitors.setText("Visitors")
+        self.visitors.clicked.connect(self.visitor)
         
         self.profit = QPushButton()
         self.profit.setText("Daily profit")
+        self.profit.clicked.connect(self.showProfit)
         
         self.run = QPushButton()
         self.flag = False
@@ -38,8 +41,8 @@ class MainMenu(QMainWindow):
         self.flag = not self.flag
         if self.flag:
             self.run.setText("Day is opened!")
-            self.visitors.clicked.connect(self.visitor)
             self.orders.clicked.connect(self.order)
+            self.run.clicked.connect(self.close)
         else:
             self.run.setText("Day is closed!")
 
@@ -50,3 +53,16 @@ class MainMenu(QMainWindow):
     def order(self):
         self.orderMenu = OrdersMenu()
         self.orderMenu.show()
+        
+    def close(self):
+        self.profitDigit = calculate()
+        
+    def showProfit(self):
+        msg = QMessageBox()
+        msg.setWindowTitle("Daily profit")
+        if self.flag:
+            text = '0'
+        else:
+            text = str(self.profitDigit)
+        msg.setText(f'{text} Rubles')
+        msg.exec_()
