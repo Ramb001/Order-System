@@ -45,6 +45,11 @@ class OrdersMenu(QMainWindow):
         for i in range(len(self.orders)):
             text = str(f'<b>№{i+1} | Table: {self.orders[i][0]} | Visitor: {self.orders[i][1]}</b>\n')
             self.showOrders.append(text)
+            text2 = str(f'Заказ:')
+            self.showOrders.append(text2)
+            for j in range(2, len(orders[i])):
+                text3 = str(f'{orders[i][j][1]} x{orders[i][j][2]}')
+                self.showOrders.append(text3)
         self.showOrders.show()
         
     def deleteOrders(self):
