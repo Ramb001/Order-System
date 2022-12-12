@@ -2,6 +2,7 @@ from PyQt5.QtWidgets import QLineEdit, QWidget, QGridLayout, QPushButton, QMainW
 
 from Actions.getCategories import getCategories
 from Actions.getNames import getNames
+from Actions.getPersons import getVisitors
 
 
 class CreateOrder(QMainWindow):
@@ -11,6 +12,9 @@ class CreateOrder(QMainWindow):
         self.centralwidget = QWidget()
         self.gridLayout = QGridLayout()
         self.setWindowTitle("New order")
+        
+        self.choosePerson = QComboBox()
+        self.choosePerson.addItems(getVisitors())
 
         self.createOrder = QPushButton()
         self.createOrder.setText("Create")
@@ -22,9 +26,18 @@ class CreateOrder(QMainWindow):
         self.position = QComboBox()
         self.position.addItems(['Мартини Амаро'])
         
-        self.gridLayout.addWidget(self.category, 0, 0, 1, 1)
-        self.gridLayout.addWidget(self.position, 1, 0, 1, 1)
-        self.gridLayout.addWidget(self.createOrder, 2, 0, 1, 1)
+        self.amount = QLineEdit()
+        self.amount.setPlaceholderText("Amount")
+        
+        self.table = QLineEdit()
+        self.table.setPlaceholderText("Number of table")
+        
+        self.gridLayout.addWidget(self.table, 0, 0, 1, 1)
+        self.gridLayout.addWidget(self.choosePerson, 1, 0, 1, 1)
+        self.gridLayout.addWidget(self.category, 2, 0, 1, 1)
+        self.gridLayout.addWidget(self.position, 3, 0, 1, 1)
+        self.gridLayout.addWidget(self.amount, 4, 0, 1, 1)
+        self.gridLayout.addWidget(self.createOrder, 5, 0, 1, 1)
         
         self.centralwidget.setLayout(self.gridLayout)
         self.setCentralWidget(self.centralwidget)
