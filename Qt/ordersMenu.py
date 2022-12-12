@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QMainWindow, QWidget, QGridLayout, QPushButton, QVBoxLayout, QTextBrowser
+from PyQt5.QtWidgets import QMainWindow, QWidget, QGridLayout, QPushButton, QVBoxLayout, QTextBrowser, QLineEdit
 
 from Qt.createOrder import CreateOrder
 from Actions.stackOrder import orders
@@ -22,8 +22,17 @@ class OrdersMenu(QMainWindow):
         self.showOrders = QTextBrowser()
         self.showText()
         
+        self.deleteOrder = QLineEdit()
+        self.deleteOrder.setPlaceholderText("Number of order")
+        
+        self.deleteButton = QPushButton()
+        self.deleteButton.setText("Delete")
+        self.deleteButton.clicked.connect(self.deleteOrders)
+        
         self.gridLayout.addWidget(self.showOrders, 0, 0, 1, 1)
         self.gridLayout.addWidget(self.createOrder, 1, 0, 1, 1)
+        self.gridLayout.addWidget(self.deleteOrder, 2, 0, 1, 1)
+        self.gridLayout.addWidget(self.deleteButton, 3, 0, 1, 1)
         
         self.centralwidget.setLayout(self.gridLayout)
         self.setCentralWidget(self.centralwidget)
@@ -37,4 +46,9 @@ class OrdersMenu(QMainWindow):
             text = str(f'<b>№{i+1} | Table: {self.orders[i][0]} | Visitor: {self.orders[i][1]}</b>\n')
             self.showOrders.append(text)
         self.showOrders.show()
-            
+        
+    def deleteOrders(self):
+        index = int(self.deleteOrder.text()) - 1
+        orders.pop(index)
+        self.orders.pop(index)
+        self.deleteButton.setStyleSheet("color : green")
