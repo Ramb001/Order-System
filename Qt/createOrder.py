@@ -19,6 +19,9 @@ class CreateOrder(QMainWindow):
         self.createOrder = QPushButton()
         self.createOrder.setText("Create")
         
+        self.addButton = QPushButton()
+        self.addButton.setText("Add")
+        
         self.category = QComboBox()
         self.category.addItems(getCategories())
         self.category.currentIndexChanged.connect(self.updateCombo)
@@ -37,7 +40,8 @@ class CreateOrder(QMainWindow):
         self.gridLayout.addWidget(self.category, 2, 0, 1, 1)
         self.gridLayout.addWidget(self.position, 3, 0, 1, 1)
         self.gridLayout.addWidget(self.amount, 4, 0, 1, 1)
-        self.gridLayout.addWidget(self.createOrder, 5, 0, 1, 1)
+        self.gridLayout.addWidget(self.addButton, 5, 0, 1, 1)
+        self.gridLayout.addWidget(self.createOrder, 6, 0, 1, 1)
         
         self.centralwidget.setLayout(self.gridLayout)
         self.setCentralWidget(self.centralwidget)
