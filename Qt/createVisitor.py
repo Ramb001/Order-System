@@ -3,7 +3,6 @@ from PyQt5.QtWidgets import QLineEdit, QWidget, QGridLayout, QPushButton, QMainW
 from Actions.createVisitor import add
 
 
-
 class CreateVisitor(QMainWindow):
     def __init__(self):
         super().__init__()
