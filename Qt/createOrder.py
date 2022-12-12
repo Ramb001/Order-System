@@ -60,7 +60,7 @@ class CreateOrder(QMainWindow):
         visitor = str(self.choosePerson.currentText())
         position = str(self.position.currentText())
         amount = str(self.amount.text())
-        if len(str(amount)) != 0 and len(str(tableNum)) != 0:
+        if len(amount) != 0 and len(tableNum) != 0 and len(visitor) != 0:
             stack(tableNum, visitor, category, position, amount)
             self.addButton.setStyleSheet("color : green")
         else:
