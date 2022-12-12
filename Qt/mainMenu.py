@@ -26,6 +26,7 @@ class MainMenu(QMainWindow):
         
         self.run = QPushButton()
         self.flag = False
+        self.profitDigit = 0
         self.run.setText("Day is closed!")
         self.run.clicked.connect(self.changeState)
 
