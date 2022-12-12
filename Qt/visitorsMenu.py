@@ -13,7 +13,7 @@ class VisitorsMenu(QMainWindow):
         self.gridLayout = QGridLayout()
         self.setWindowTitle("Visitors")
         
-        self.columns = ['Surname', 'Name', 'Spent money']
+        self.columns = ['Visitor', 'Spent money']
         self.table = QTableWidget()
         self.table.setColumnCount(len(self.columns))
         self.table.setHorizontalHeaderLabels(self.columns)
