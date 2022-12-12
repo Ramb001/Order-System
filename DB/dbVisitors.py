@@ -6,8 +6,7 @@ cur3 = con3.cursor()
 
 def createVisitors():
     cur3.execute("""CREATE TABLE IF NOT EXISTS visitors(
-        surname TEXT,
-        name TEXT,
+        name TEXT PRIMARY KEY UNIQUE,
         money INT);
         """)
     con3.commit()
