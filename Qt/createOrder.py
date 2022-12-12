@@ -1,8 +1,10 @@
 from PyQt5.QtWidgets import QLineEdit, QWidget, QGridLayout, QPushButton, QMainWindow, QComboBox
+from sqlalchemy import table
 
 from Actions.getCategories import getCategories
 from Actions.getNames import getNames
 from Actions.getPersons import getVisitors
+from Actions.stackOrder import stack, add
 
 
 class CreateOrder(QMainWindow):
@@ -18,9 +20,11 @@ class CreateOrder(QMainWindow):
 
         self.createOrder = QPushButton()
         self.createOrder.setText("Create")
+        self.createOrder.clicked.connect(self.createOrd)
         
         self.addButton = QPushButton()
         self.addButton.setText("Add")
+        self.addButton.clicked.connect(self.getOrder)
         
         self.category = QComboBox()
         self.category.addItems(getCategories())
@@ -49,3 +53,19 @@ class CreateOrder(QMainWindow):
     def updateCombo(self):
         self.position.clear()
         self.position.addItems(getNames(str(self.category.currentText())))
+        
+    def getOrder(self):
+        tableNum = str(self.table.text())
+        category = str(self.category.currentText())
+        visitor = str(self.choosePerson.currentText())
+        position = str(self.position.currentText())
+        amount = str(self.amount.text())
+        if len(str(self.amount)) != 0 and len(str(self.table)) != 0:
+            stack(tableNum, visitor, category, position, amount)
+            self.addButton.setStyleSheet("color : green")
+        else:
+            self.addButton.setStyleSheet("color : red")
+            
+    def createOrd(self):
+        add()
+        self.createOrder.setStyleSheet("color : green")
