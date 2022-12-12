@@ -30,4 +30,3 @@ def stack(tableNum, name, category, position, amount):
         
 def add():
     orders.append(tuple(order))
-    print(orders)
