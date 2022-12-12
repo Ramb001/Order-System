@@ -18,4 +18,5 @@ def calculate():
             con3.commit()
             money = 0
         orders.clear()
+        
         return prof
